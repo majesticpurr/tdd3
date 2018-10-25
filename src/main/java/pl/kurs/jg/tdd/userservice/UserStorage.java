@@ -1,8 +1,8 @@
 package pl.kurs.jg.tdd.userservice;
 
-public class UserStorage {
+class UserStorage {
 
-    public User read(String login) {
+    User read(String login) {
         return null;
     }
 
