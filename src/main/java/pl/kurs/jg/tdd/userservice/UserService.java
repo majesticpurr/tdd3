@@ -8,7 +8,7 @@ public class UserService {
     }
 
     public User find(String login) {
-        return null;
+        return userStorage.read(login);
     }
 
 }
