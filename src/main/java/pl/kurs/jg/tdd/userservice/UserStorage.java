@@ -14,4 +14,8 @@ class UserStorage {
 
     }
 
+    void delete(String login) {
+
+    }
+
 }

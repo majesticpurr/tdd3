@@ -35,4 +35,8 @@ public class UserService {
         userStorage.update(login, user);
     }
 
+    public void delete(String login) {
+
+    }
+
 }
