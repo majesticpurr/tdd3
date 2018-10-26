@@ -163,4 +163,31 @@ public class UserServiceTest {
         // then
         Mockito.verify(userStorage, Mockito.atLeastOnce()).update(login, new User(login, newName, lastName));
     }
+
+    @Test
+    public void shouldUpdateUserLastName() {
+
+        //given
+
+        String login = "jdoe";
+        String name = "John";
+        String lastName = "Doe";
+
+        String newLastName = "Demolition";
+
+        User user = new User(login, name, lastName);
+
+        UserStorage userStorage = Mockito.mock(UserStorage.class);
+        BDDMockito.given(userStorage.read(login)).willReturn(user);
+
+        LoginValidator loginValidator = Mockito.mock(LoginValidator.class);
+
+        UserService userService = new UserService(userStorage, loginValidator);
+
+        // when
+        userService.updateLastName(login, newLastName);
+
+        // then
+        Mockito.verify(userStorage, Mockito.atLeastOnce()).update(login, new User(login, name, newLastName));
+    }
 }
