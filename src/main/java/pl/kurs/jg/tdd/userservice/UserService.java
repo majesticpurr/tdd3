@@ -23,4 +23,12 @@ public class UserService {
         }
     }
 
+    public void updateName(String login, String name) {
+
+    }
+
+    public void updateLastName(String login, String lastName) {
+
+    }
+
 }

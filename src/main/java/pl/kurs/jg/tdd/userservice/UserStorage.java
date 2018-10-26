@@ -10,4 +10,8 @@ class UserStorage {
 
     }
 
+    void update(User user) {
+
+    }
+
 }
