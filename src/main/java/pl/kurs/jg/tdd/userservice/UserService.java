@@ -36,9 +36,10 @@ public class UserService {
     }
 
     public void delete(String login) {
-        if (find(login) != null) {
-            userStorage.delete(login);
+        if (find(login) == null) {
+            throw new LoginDoesntExistException(login);
         }
+        userStorage.delete(login);
     }
 
 }
