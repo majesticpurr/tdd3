@@ -147,10 +147,27 @@ public class UserServiceTest {
         BDDMockito.given(userStorage.read(login)).willReturn(null);
 
         // when
-        userService.delete(login);
+        try {
+            userService.delete(login);
+        } catch (LoginDoesntExistException e) {
+
+        }
 
         // then
         Mockito.verify(userStorage, Mockito.never()).delete(login);
+    }
+
+    @Test(expected = LoginDoesntExistException.class)
+    public void shouldThrowExceptionWhenDeletingNotExistingUser() {
+
+        //given
+        BDDMockito.given(userStorage.read(login)).willReturn(null);
+
+        // when
+        userService.delete(login);
+
+        // then
+
     }
 
 
