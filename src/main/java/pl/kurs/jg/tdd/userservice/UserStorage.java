@@ -1,21 +1,13 @@
 package pl.kurs.jg.tdd.userservice;
 
-class UserStorage {
+abstract class UserStorage {
 
-    User read(String login) {
-        return null;
-    }
+    abstract User read(String login);
 
-    void create(User user) {
+    abstract void create(User user);
 
-    }
+    abstract void update(String login, User newUserData);
 
-    void update(String login, User newUserData) {
-
-    }
-
-    void delete(String login) {
-
-    }
+    abstract void delete(String login);
 
 }
