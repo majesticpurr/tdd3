@@ -149,7 +149,7 @@ public class UserServiceTest {
         // when
         try {
             userService.delete(login);
-        } catch (LoginDoesntExistException e) {
+        } catch (LoginDoesNotExistException e) {
 
         }
 
@@ -157,7 +157,7 @@ public class UserServiceTest {
         Mockito.verify(userStorage, Mockito.never()).delete(login);
     }
 
-    @Test(expected = LoginDoesntExistException.class)
+    @Test(expected = LoginDoesNotExistException.class)
     public void shouldThrowExceptionWhenDeletingNotExistingUser() {
 
         //given
@@ -203,7 +203,7 @@ public class UserServiceTest {
     }
 
 
-    @Test(expected = LoginDoesntExistException.class)
+    @Test(expected = LoginDoesNotExistException.class)
     public void shouldThrowExceptionWhenUpdatingNameOfNotExistingUser() {
         //given
 
@@ -217,7 +217,7 @@ public class UserServiceTest {
         // then
     }
 
-    @Test(expected = LoginDoesntExistException.class)
+    @Test(expected = LoginDoesNotExistException.class)
     public void shouldThrowExceptionWhenUpdatingLastNameOfNotExistingUser() {
 
         //given
