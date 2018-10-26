@@ -33,6 +33,6 @@ class UserStorageMap extends UserStorage {
     }
 
     void delete(String login) {
-
+        userMap.remove(login);
     }
 }
