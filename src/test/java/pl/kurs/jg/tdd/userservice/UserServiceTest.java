@@ -138,4 +138,20 @@ public class UserServiceTest {
         // then
         Mockito.verify(userStorage, Mockito.times(1)).delete(login);
     }
+
+    @Test
+    public void shouldNotDeleteNotExistingUser() {
+
+        //given
+
+        BDDMockito.given(userStorage.read(login)).willReturn(null);
+
+        // when
+        userService.delete(login);
+
+        // then
+        Mockito.verify(userStorage, Mockito.never()).delete(login);
+    }
+
+
 }
