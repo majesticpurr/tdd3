@@ -202,4 +202,34 @@ public class UserServiceTest {
         Mockito.verify(userStorage, Mockito.never()).update(login, new User(login, name, newLastName));
     }
 
+
+    @Test(expected = LoginDoesntExistException.class)
+    public void shouldThrowExceptionWhenUpdatingNameOfNotExistingUser() {
+        //given
+
+        String newName = "Jane";
+
+        BDDMockito.given(userStorage.read(login)).willReturn(null);
+
+        // when
+        userService.updateName(login, newName);
+
+        // then
+    }
+
+    @Test(expected = LoginDoesntExistException.class)
+    public void shouldThrowExceptionWhenUpdatingLastNameOfNotExistingUser() {
+
+        //given
+
+        String newLastName = "Demolition";
+
+        BDDMockito.given(userStorage.read(login)).willReturn(null);
+
+        // when
+        userService.updateLastName(login, newLastName);
+
+        // then
+    }
+
 }
