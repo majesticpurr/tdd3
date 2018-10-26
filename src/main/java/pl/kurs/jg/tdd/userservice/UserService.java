@@ -30,7 +30,9 @@ public class UserService {
     }
 
     public void updateLastName(String login, String lastName) {
-
+        User user = find(login);
+        user.setLastName(lastName);
+        userStorage.update(login, user);
     }
 
 }
