@@ -21,7 +21,7 @@ class UserStorageMap extends UserStorage {
 
 
     User read(String login) {
-        return null;
+        return userMap.get(login);
     }
 
     void create(User user) {
