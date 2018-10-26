@@ -180,8 +180,11 @@ public class UserServiceTest {
         BDDMockito.given(userStorage.read(login)).willReturn(null);
 
         // when
-        userService.updateName(login, newName);
+        try {
+            userService.updateName(login, newName);
+        } catch (LoginDoesNotExistException e) {
 
+        }
         // then
         Mockito.verify(userStorage, Mockito.never()).update(login, new User(login, newName, lastName));
     }
@@ -196,8 +199,11 @@ public class UserServiceTest {
         BDDMockito.given(userStorage.read(login)).willReturn(null);
 
         // when
-        userService.updateLastName(login, newLastName);
+        try {
+            userService.updateLastName(login, newLastName);
+        } catch (LoginDoesNotExistException e) {
 
+        }
         // then
         Mockito.verify(userStorage, Mockito.never()).update(login, new User(login, name, newLastName));
     }
