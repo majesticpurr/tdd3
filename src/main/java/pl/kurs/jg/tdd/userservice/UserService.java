@@ -25,14 +25,18 @@ public class UserService {
 
     public void updateName(String login, String name) {
         User user = find(login);
-        user.setName(name);
-        userStorage.update(login, user);
+        if (user != null) {
+            user.setName(name);
+            userStorage.update(login, user);
+        }
     }
 
     public void updateLastName(String login, String lastName) {
         User user = find(login);
-        user.setLastName(lastName);
-        userStorage.update(login, user);
+        if (user != null) {
+            user.setLastName(lastName);
+            userStorage.update(login, user);
+        }
     }
 
     public void delete(String login) {
