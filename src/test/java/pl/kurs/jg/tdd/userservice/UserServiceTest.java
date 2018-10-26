@@ -132,8 +132,6 @@ public class UserServiceTest {
 
         //given
 
-        BDDMockito.given(userStorage.read(login)).willReturn(user);
-
         // when
         userService.delete(login);
 
