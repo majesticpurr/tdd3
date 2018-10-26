@@ -24,7 +24,9 @@ public class UserService {
     }
 
     public void updateName(String login, String name) {
-
+        User user = find(login);
+        user.setName(name);
+        userStorage.update(login, user);
     }
 
     public void updateLastName(String login, String lastName) {
