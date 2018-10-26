@@ -56,4 +56,29 @@ public class UserServiceTest {
         Mockito.verify(userStorage).create(user);
     }
 
+    @Test
+    public void shouldNotAddUserWhenLoginValidationFails() {
+
+        // given
+
+        String login = "jdoe";
+        String name = "John";
+        String lastName = "Doe";
+
+        User user = new User(login, name, lastName);
+
+        UserStorage userStorage = Mockito.mock(UserStorage.class);
+
+        LoginValidator loginValidator = Mockito.mock(LoginValidator.class);
+        BDDMockito.given(loginValidator.isValid(ArgumentMatchers.any())).willReturn(false);
+
+        UserService userService = new UserService(userStorage, loginValidator);
+
+        // when
+        userService.add(login, name, lastName);
+
+        // then
+        Mockito.verify(userStorage, Mockito.never()).create(user);
+    }
+
 }
