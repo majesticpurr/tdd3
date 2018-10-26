@@ -36,7 +36,7 @@ public class UserService {
     }
 
     public void delete(String login) {
-
+        userStorage.delete(login);
     }
 
 }
