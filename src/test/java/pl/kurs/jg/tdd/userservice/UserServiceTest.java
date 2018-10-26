@@ -170,5 +170,36 @@ public class UserServiceTest {
 
     }
 
+    @Test
+    public void shouldNotUpdateNameOfNotExistingUser() {
+
+        //given
+
+        String newName = "Jane";
+
+        BDDMockito.given(userStorage.read(login)).willReturn(null);
+
+        // when
+        userService.updateName(login, newName);
+
+        // then
+        Mockito.verify(userStorage, Mockito.never()).update(login, new User(login, newName, lastName));
+    }
+
+    @Test
+    public void shouldNotUpdateLastNameOfNotExistingUser() {
+
+        //given
+
+        String newLastName = "Demolition";
+
+        BDDMockito.given(userStorage.read(login)).willReturn(null);
+
+        // when
+        userService.updateLastName(login, newLastName);
+
+        // then
+        Mockito.verify(userStorage, Mockito.never()).update(login, new User(login, name, newLastName));
+    }
 
 }
