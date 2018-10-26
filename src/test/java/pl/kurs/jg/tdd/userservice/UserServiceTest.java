@@ -151,6 +151,8 @@ public class UserServiceTest {
         User user = new User(login, name, lastName);
 
         UserStorage userStorage = Mockito.mock(UserStorage.class);
+        BDDMockito.given(userStorage.read(login)).willReturn(user);
+
         LoginValidator loginValidator = Mockito.mock(LoginValidator.class);
 
         UserService userService = new UserService(userStorage, loginValidator);
