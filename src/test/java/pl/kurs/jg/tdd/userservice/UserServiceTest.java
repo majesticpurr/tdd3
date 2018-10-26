@@ -31,4 +31,26 @@ public class UserServiceTest {
         Assert.assertEquals(user, result);
 
     }
+
+    @Test
+    public void shouldAddUser() {
+
+        // given
+
+        String login = "jdoe";
+        String name = "John";
+        String lastName = "Doe";
+
+        User user = new User(login, name, lastName);
+
+        UserStorage userStorage = Mockito.mock(UserStorage.class);
+        UserService userService = new UserService(userStorage);
+
+        // when
+        userService.add(login, name, lastName);
+
+        // then
+        Mockito.verify(userStorage).create(user);
+    }
+
 }
