@@ -22,7 +22,9 @@ public class UserServiceTest {
         UserStorage userStorage = Mockito.mock(UserStorage.class);
         BDDMockito.given(userStorage.read(ArgumentMatchers.eq(login))).willReturn(user);
 
-        UserService userService = new UserService(userStorage);
+        LoginValidator loginValidator = Mockito.mock(LoginValidator.class);
+
+        UserService userService = new UserService(userStorage, loginValidator);
 
         // when
         User result = userService.find(login);
@@ -44,8 +46,9 @@ public class UserServiceTest {
         User user = new User(login, name, lastName);
 
         UserStorage userStorage = Mockito.mock(UserStorage.class);
-        UserService userService = new UserService(userStorage);
+        LoginValidator loginValidator = Mockito.mock(LoginValidator.class);
 
+        UserService userService = new UserService(userStorage, loginValidator);
         // when
         userService.add(login, name, lastName);
 

@@ -2,9 +2,11 @@ package pl.kurs.jg.tdd.userservice;
 
 public class UserService {
     private final UserStorage userStorage;
+    private final LoginValidator loginValidator;
 
-    public UserService(UserStorage userStorage) {
+    public UserService(UserStorage userStorage, LoginValidator loginValidator) {
         this.userStorage = userStorage;
+        this.loginValidator = loginValidator;
     }
 
     public User find(String login) {
