@@ -11,4 +11,8 @@ public class UserService {
         return userStorage.read(login);
     }
 
+    public void add(String login, String name, String lastName) {
+
+    }
+
 }

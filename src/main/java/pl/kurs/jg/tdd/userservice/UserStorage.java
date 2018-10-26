@@ -6,4 +6,8 @@ class UserStorage {
         return null;
     }
 
+    void create(User user) {
+
+    }
+
 }
