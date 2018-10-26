@@ -102,7 +102,11 @@ public class UserServiceTest {
         UserService userService = new UserService(userStorage, loginValidator);
 
         // when
-        userService.add(login, name, lastName);
+        try {
+            userService.add(login, name, lastName);
+        } catch (LoginExistsException e) {
+
+        }
 
         // then
         Mockito.verify(userStorage, Mockito.never()).create(user);
