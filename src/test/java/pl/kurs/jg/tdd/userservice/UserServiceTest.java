@@ -7,6 +7,7 @@ import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 
 public class UserServiceTest {
+
     private final String login = "jdoe";
     private final String name = "John";
     private final String lastName = "Doe";
@@ -236,6 +237,19 @@ public class UserServiceTest {
         userService.updateLastName(login, newLastName);
 
         // then
+    }
+
+    @Test(expected = LoginDoesNotExistException.class)
+    public void shouldThrowExceptionWhenUserIsNotFound() {
+
+        //given
+        BDDMockito.given(userStorage.read(login)).willReturn(null);
+
+        // when
+        userService.find(login);
+
+        // then
+
     }
 
 }
