@@ -25,7 +25,7 @@ class UserStorageMap extends UserStorage {
     }
 
     void create(User user) {
-
+        userMap.put(user.getLogin(), user);
     }
 
     void update(String login, User newUserData) {
