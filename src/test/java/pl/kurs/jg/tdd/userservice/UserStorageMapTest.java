@@ -51,4 +51,18 @@ public class UserStorageMapTest {
         // then
         Assert.assertEquals(updatedUser, userMap.get(user.getLogin()));
     }
+
+    @Test
+    public void shouldDeleteUser() {
+        // given
+        userMap.clear();
+        userMap.put(user.getLogin(), user);
+
+        // when
+        subject.delete(user.getLogin());
+
+        // then
+        Assert.assertTrue(userMap.isEmpty());
+
+    }
 }
