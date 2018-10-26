@@ -127,5 +127,17 @@ public class UserServiceTest {
         Mockito.verify(userStorage, Mockito.atLeastOnce()).update(login, new User(login, name, newLastName));
     }
 
+    @Test
+    public void shouldDeleteUser() {
 
+        //given
+
+        BDDMockito.given(userStorage.read(login)).willReturn(user);
+
+        // when
+        userService.delete(login);
+
+        // then
+        Mockito.verify(userStorage, Mockito.times(1)).delete(login);
+    }
 }
