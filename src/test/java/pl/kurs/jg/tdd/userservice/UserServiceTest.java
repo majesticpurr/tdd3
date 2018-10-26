@@ -7,16 +7,16 @@ import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 
 public class UserServiceTest {
-    final String login = "jdoe";
-    final String name = "John";
-    final String lastName = "Doe";
+    private final String login = "jdoe";
+    private final String name = "John";
+    private final String lastName = "Doe";
 
-    final User user = new User(login, name, lastName);
+    private final User user = new User(login, name, lastName);
 
-    UserStorage userStorage = Mockito.mock(UserStorage.class);
-    LoginValidator loginValidator = Mockito.mock(LoginValidator.class);
+    private UserStorage userStorage = Mockito.mock(UserStorage.class);
+    private LoginValidator loginValidator = Mockito.mock(LoginValidator.class);
 
-    UserService userService = new UserService(userStorage, loginValidator);
+    private UserService userService = new UserService(userStorage, loginValidator);
 
     @Test
     public void shouldFindUser() {
