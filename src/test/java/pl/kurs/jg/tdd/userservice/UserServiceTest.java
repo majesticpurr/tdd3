@@ -137,4 +137,28 @@ public class UserServiceTest {
         // then
 
     }
+
+    @Test
+    public void shouldUpdateUserName() {
+
+        //given
+
+        String login = "jdoe";
+        String name = "John";
+        String lastName = "Doe";
+        String newName = "Jane";
+
+        User user = new User(login, name, lastName);
+
+        UserStorage userStorage = Mockito.mock(UserStorage.class);
+        LoginValidator loginValidator = Mockito.mock(LoginValidator.class);
+
+        UserService userService = new UserService(userStorage, loginValidator);
+
+        // when
+        userService.updateName(login, newName);
+
+        // then
+        Mockito.verify(userStorage, Mockito.atLeastOnce()).update(new User(login, newName, lastName));
+    }
 }
