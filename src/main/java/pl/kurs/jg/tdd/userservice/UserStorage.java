@@ -10,7 +10,7 @@ class UserStorage {
 
     }
 
-    void update(User user) {
+    void update(String login, User newUserData) {
 
     }
 

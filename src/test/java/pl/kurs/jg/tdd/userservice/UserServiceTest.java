@@ -159,6 +159,6 @@ public class UserServiceTest {
         userService.updateName(login, newName);
 
         // then
-        Mockito.verify(userStorage, Mockito.atLeastOnce()).update(new User(login, newName, lastName));
+        Mockito.verify(userStorage, Mockito.atLeastOnce()).update(login, new User(login, newName, lastName));
     }
 }
