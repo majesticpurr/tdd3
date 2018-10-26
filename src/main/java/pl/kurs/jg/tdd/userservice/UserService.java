@@ -10,38 +10,41 @@ public class UserService {
     }
 
     public User find(String login) {
-        return userStorage.read(login);
-    }
-
-    public void add(String login, String name, String lastName) {
-        if (find(login) != null) {
-            throw new LoginExistsException(login);
-        }
-
-        if (loginValidator.isValid(login)) {
-            userStorage.create(new User(login, name, lastName));
-        }
-    }
-
-    public void updateName(String login, String name) {
-        User user = find(login);
+        User user = userStorage.read(login);
 
         if (user == null) {
             throw new LoginDoesNotExistException(login);
         }
 
+        return user;
+    }
+
+    public void add(String login, String name, String lastName) {
+
+
+        try {
+            find(login);
+        } catch (LoginDoesNotExistException e) {
+
+            if (loginValidator.isValid(login)) {
+                userStorage.create(new User(login, name, lastName));
+            }
+            return;
+        }
+
+        throw new LoginExistsException(login);
+
+    }
+
+    public void updateName(String login, String name) {
+        User user = find(login); // find() will throw LoginDoesNotExistException if not found
         user.setName(name);
         userStorage.update(login, user);
     }
 
     public void updateLastName(String login, String lastName) {
 
-        User user = find(login);
-
-        if (user == null) {
-            throw new LoginDoesNotExistException(login);
-        }
-
+        User user = find(login); // find() will throw LoginDoesNotExistException if not found
         user.setLastName(lastName);
         userStorage.update(login, user);
     }
