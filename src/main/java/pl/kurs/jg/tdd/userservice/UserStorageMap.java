@@ -29,7 +29,7 @@ class UserStorageMap extends UserStorage {
     }
 
     void update(String login, User newUserData) {
-
+        userMap.put(login, newUserData);
     }
 
     void delete(String login) {
