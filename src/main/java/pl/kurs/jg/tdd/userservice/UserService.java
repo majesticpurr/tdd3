@@ -12,7 +12,7 @@ public class UserService {
     }
 
     public void add(String login, String name, String lastName) {
-
+        userStorage.create(new User(login, name, lastName));
     }
 
 }
