@@ -14,7 +14,7 @@ public class UserService {
     }
 
     public void add(String login, String name, String lastName) {
-        if (loginValidator.isValid(login)) {
+        if (loginValidator.isValid(login) && find(login) == null) {
             userStorage.create(new User(login, name, lastName));
         }
     }
