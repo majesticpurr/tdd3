@@ -35,4 +35,20 @@ public class UserStorageMapTest {
         // then
         Assert.assertEquals(user, result);
     }
+
+    @Test
+    public void shouldUpdateUser() {
+
+        // given
+        userMap.put(user.getLogin(), user);
+        String newName = "Jenny";
+        String newLastName = "Doppelganger";
+        User updatedUser = new User(user.getLogin(), newName, newLastName);
+
+        // when
+        subject.update(user.getLogin(), updatedUser);
+
+        // then
+        Assert.assertEquals(updatedUser, userMap.get(user.getLogin()));
+    }
 }
