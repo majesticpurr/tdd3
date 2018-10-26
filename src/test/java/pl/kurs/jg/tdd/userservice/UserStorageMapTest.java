@@ -21,6 +21,18 @@ public class UserStorageMapTest {
         subject.create(user);
 
         //then
-        Assert.assertEquals(userMap.get(user.getLogin()), user);
+        Assert.assertEquals(user, userMap.get(user.getLogin()));
+    }
+
+    @Test
+    public void shouldReadUser() {
+        // given
+        userMap.put(user.getLogin(), user);
+
+        // when
+        User result = subject.read(user.getLogin());
+
+        // then
+        Assert.assertEquals(user, result);
     }
 }
